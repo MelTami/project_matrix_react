@@ -1,10 +1,9 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React from "react";
 import style from "./Botao.module.scss";
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-}
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-function Botao({onClick, type, children}: Props) {
+function Botao({ onClick, type, children }: Props) {
   return (
     <button type={type} className={style.botao} onClick={onClick}>
       {children}

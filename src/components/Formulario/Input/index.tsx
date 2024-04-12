@@ -1,14 +1,7 @@
 import React from "react";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement>{
-    setTempo: React.Dispatch<React.SetStateAction<string>>,
-    setTarefa: (value: React.SetStateAction<string>) => void
-}
+interface Props extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-export function Input({setTarefa, setTempo, value, type, name, id, onChange}: Props){
-    return(
-        <input
-
-        />
-    )
+export function Input({ type }: Props) {
+  return <input />;
 }
