@@ -4,7 +4,6 @@ import style from "./Formulario.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import { ITarefa } from "../../types/ITarefa";
 import { Input } from "./Input";
-import { useForm } from "react-hook-form";
 
 interface Props {
   setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>;
@@ -13,15 +12,6 @@ interface Props {
 function Formulario({ setTarefas }: Props) {
   const [tarefa, setTarefa] = useState("");
   const [tempo, setTempo] = useState("00:00");
-  const {
-    register,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      tarefa: "",
-      tempo: "00:00:00",
-    },
-  });
 
   function adicionarTarefas(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
@@ -42,9 +32,9 @@ function Formulario({ setTarefas }: Props) {
     <form className={style.novaTarefa} onSubmit={adicionarTarefas}>
       <div className={style.inputContainer}>
         <label htmlFor="tarefa">Adicione uma tarefa</label>
-        <input
+        <Input
           type="text"
-          {...register("tarefa", { required: true })}
+          name="tarefa"
           placeholder="Escreva o nome da tarefa aqui"
           value={tarefa}
           onChange={(evento) => setTarefa(evento.target.value)}
@@ -53,13 +43,10 @@ function Formulario({ setTarefas }: Props) {
       </div>
       <div className={style.inputContainer}>
         <label htmlFor="tempo">Tempo</label>
-        <input
+        <Input
           type="time"
-          {...register("tempo", {
-            required: true,
-            min: "00:00:01",
-            max: "01:30:00",
-          })}
+          min="00:00:00"
+          max="01:30:00"
           step="1"
           id="tempo"
           value={tempo}
