@@ -4,6 +4,7 @@ import style from "./Formulario.module.scss";
 import { v4 as uuidv4 } from "uuid";
 import { ITarefa } from "../../types/ITarefa";
 import { Input } from "./Input";
+import { tarefasSchema } from "../../validation/tarefasValidation";
 
 interface Props {
   setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>;
@@ -27,7 +28,16 @@ function Formulario({ setTarefas }: Props) {
     ]);
     setTarefa("");
     setTempo("00:00");
+    const validarTarefas = async(event: React.FormEvent<HTMLFormElement>) =>{
+      event.preventDefault();
+      let formData = {
+        tarefa: event.target[0].value,
+        tempo: event.target[1].value
+      };
+      const isValid = await tarefasSchema.isValid(formData);
+    }
   }
+
   return (
     <form className={style.novaTarefa} onSubmit={adicionarTarefas}>
       <div className={style.inputContainer}>

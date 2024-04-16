@@ -1,10 +1,14 @@
 import React from "react";
+import { ITarefa } from "../../../types/ITarefa";
 
+interface Props extends ITarefa{
+
+}
 
 interface InputProp extends React.InputHTMLAttributes<HTMLInputElement>{
 }
 
-export function Input({onChange, value, type, id, name} : InputProp){
+export function Input({onChange, value, type, id, name} : InputProp, {tarefa, tempo} : Props){
 
   return(
     <input
@@ -16,6 +20,7 @@ export function Input({onChange, value, type, id, name} : InputProp){
           id={id}
           required
           step="1"
+
         />
   )
 }
