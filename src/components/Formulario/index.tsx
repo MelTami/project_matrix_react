@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 import { ITarefa } from "../../types/ITarefa";
 import { Input } from "./Input";
 import { tarefasSchema } from "../../validation/tarefasValidation";
+import { useForm } from "react-hook-form";
+import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 
 interface Props {
   setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>;
@@ -13,6 +15,20 @@ interface Props {
 function Formulario({ setTarefas }: Props) {
   const [tarefa, setTarefa] = useState("");
   const [tempo, setTempo] = useState("00:00");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<ITarefa>();
+
+  const validarTarefas = async () => {
+    let formData = {
+      tarefa: { tarefa },
+      tempo: { tempo },
+    };
+    const isValid = await tarefasSchema.isValid(formData);
+  };
 
   function adicionarTarefas(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
@@ -28,21 +44,19 @@ function Formulario({ setTarefas }: Props) {
     ]);
     setTarefa("");
     setTempo("00:00");
-    const validarTarefas = async(event: React.FormEvent<HTMLFormElement>) =>{
-      event.preventDefault();
-      let formData = {
-        tarefa: event.target[0].value,
-        tempo: event.target[1].value
-      };
-      const isValid = await tarefasSchema.isValid(formData);
-    }
   }
+
+  // function onSubmit (){
+  //   adicionarTarefas;
+  //   validarTarefas();
+  // }
 
   return (
     <form className={style.novaTarefa} onSubmit={adicionarTarefas}>
       <div className={style.inputContainer}>
         <label htmlFor="tarefa">Adicione uma tarefa</label>
         <Input
+          {...register("tarefa", { required: true, minLength: 1 })}
           type="text"
           name="tarefa"
           placeholder="Escreva o nome da tarefa aqui"
@@ -55,7 +69,7 @@ function Formulario({ setTarefas }: Props) {
         <label htmlFor="tempo">Tempo</label>
         <Input
           type="time"
-          min="00:00:00"
+          min="00:00:01"
           max="01:30:00"
           step="1"
           id="tempo"
