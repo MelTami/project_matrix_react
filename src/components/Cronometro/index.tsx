@@ -4,6 +4,7 @@ import Relogio from "./Relogio";
 import { ITarefa } from "../../types/ITarefa";
 import { tempoParaSegundos } from "../../common/utils/time";
 import Botao from "../Botao";
+import classNames from "classnames";
 
 interface Props {
   selecionado: ITarefa | undefined;
@@ -11,6 +12,8 @@ interface Props {
 }
 export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
   const [tempo, setTempo] = useState<number>();
+  const cx = classNames.bind(style);
+
   useEffect(() => {
     if (selecionado?.tempo) {
       setTempo(tempoParaSegundos(selecionado.tempo));
@@ -26,6 +29,7 @@ export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
       finalizarTarefa();
     }, 1000);
   }
+
   return (
     <div className={style.cronometro}>
       <p className={style.titulo}>Escolha um card e inicie o cronômetro</p>

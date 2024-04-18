@@ -13,6 +13,10 @@
     background-color: #9852c4;
     box-shadow: 2px 2px 4px #0000009f inset;
   }
+
+  &:hover {
+    background-color: #e052f6;
+  }
 }
 
 @media screen and (min-width: 1280px) {
