@@ -15,7 +15,7 @@ function App() {
       tarefasAnteriores.map((tarefa) => ({
         ...tarefa,
         selecionado: tarefa.id === tarefaSelecionada.id ? true : false,
-      })),
+      }))
     );
   }
 
@@ -32,10 +32,11 @@ function App() {
             };
           }
           return tarefa;
-        }),
+        })
       );
     }
   }
+
   return (
     <div className={style.AppStyle}>
       <Formulario setTarefas={setTarefas} />
