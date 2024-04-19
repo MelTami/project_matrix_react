@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Item.module.scss";
 import { ITarefa } from "../../../types/ITarefa";
+import classNames from "classnames";
 
 interface Props extends ITarefa {
   selecionaTarefa: (tarefaSelecionada: ITarefa) => void;
@@ -14,9 +15,12 @@ function Item({
   id,
   selecionaTarefa,
 }: Props) {
+  const listClass = classNames(
+    `${style.item} ${selecionado ? style.itemSelecionado : ""} ${completado ? style.itemCompletado : ""}`
+  );
   return (
     <li
-      className={`${style.item} ${selecionado ? style.itemSelecionado : ""} ${completado ? style.itemCompletado : ""}`}
+      className={listClass}
       onClick={() =>
         !completado &&
         selecionaTarefa({

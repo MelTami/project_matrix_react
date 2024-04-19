@@ -12,7 +12,8 @@ interface Props {
 }
 export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
   const [tempo, setTempo] = useState<number>();
-  const cx = classNames.bind(style);
+  const cronometroClass = classNames(style.cronometro);
+  const relogioClass = classNames(style.relogioWrapper);
 
   useEffect(() => {
     if (selecionado?.tempo) {
@@ -31,9 +32,9 @@ export default function Cronometro({ selecionado, finalizarTarefa }: Props) {
   }
 
   return (
-    <div className={style.cronometro}>
-      <p className={style.titulo}>Escolha um card e inicie o cronômetro</p>
-      <div className={style.relogioWrapper}>
+    <div className={cronometroClass}>
+      <p>Escolha um card e inicie o cronômetro</p>
+      <div className={relogioClass}>
         <Relogio tempo={tempo} />
       </div>
       <Botao onClick={() => regressiva(tempo)}>Começar</Botao>

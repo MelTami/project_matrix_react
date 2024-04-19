@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import style from "./Relogio.module.scss";
 import React from "react";
 
@@ -12,16 +13,20 @@ export default function Relogio({ tempo = 0 }: Props) {
   const [horaDezena, horaUnidade] = String(horas).padStart(2, "0");
   const [minutoDezena, minutoUnidade] = String(minutos).padStart(2, "0");
   const [segundoDezena, segundoUnidade] = String(segundos).padStart(2, "0");
+
+  const classNameRelogio = classNames(
+    `${!":" ? style.relogioDivisao : style.relogioNumero}`
+  );
   return (
     <React.Fragment>
-      <span className={style.relogioNumero}>{horaDezena}</span>
-      <span className={style.relogioNumero}>{horaUnidade}</span>
+      <span className={classNameRelogio}>{horaDezena}</span>
+      <span className={classNameRelogio}>{horaUnidade}</span>
       <span className={style.relogioDivisao}>:</span>
-      <span className={style.relogioNumero}>{minutoDezena}</span>
-      <span className={style.relogioNumero}>{minutoUnidade}</span>
+      <span className={classNameRelogio}>{minutoDezena}</span>
+      <span className={classNameRelogio}>{minutoUnidade}</span>
       <span className={style.relogioDivisao}>:</span>
-      <span className={style.relogioNumero}>{segundoDezena}</span>
-      <span className={style.relogioNumero}>{segundoUnidade}</span>
+      <span className={classNameRelogio}>{segundoDezena}</span>
+      <span className={classNameRelogio}>{segundoUnidade}</span>
     </React.Fragment>
   );
 }

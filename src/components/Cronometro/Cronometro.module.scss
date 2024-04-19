@@ -18,25 +18,8 @@
     width: 100%;
   }
 
-  .titulo {
+  p {
     font-size: 2rem;
-  }
-
-  button {
-    background-color: #ad88d1;
-    border-radius: 10px;
-    box-shadow: 2px 4px 4px #0000009f;
-    color: #272626;
-    cursor: pointer;
-    font-size: 1.25rem;
-    padding: 16px;
-    width: 150px;
-
-    &:active {
-      background-color: #9852c4;
-      box-shadow: 2px 2px 4px #0000009f inset;
-      cursor: auto;
-    }
   }
 
   @media screen and (min-width: 1280px) {

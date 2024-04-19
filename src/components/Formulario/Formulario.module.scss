@@ -7,7 +7,7 @@
   box-shadow: 2px 4px 4px #0000009f;
   padding: 12px;
 
-  .inputContainer {
+  div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -24,7 +24,7 @@
       box-sizing: border-box;
       border: unset;
       border-radius: 5px;
-      background-color: #715d7c;
+      background-color: #826b8f;
       box-shadow: 0px 2px 4px #2d2b2b9f inset;
 
       &::placeholder {

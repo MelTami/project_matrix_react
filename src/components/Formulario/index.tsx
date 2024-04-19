@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ITarefa } from "../../types/ITarefa";
 import { Input } from "./Input";
 import { FormProvider, useForm } from "react-hook-form";
+import classNames from "classnames";
 
 interface Props {
   setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>;
@@ -15,6 +16,7 @@ export default function Formulario({ setTarefas }: Props) {
   const [tempo, setTempo] = useState("00:00");
   const methods = useForm();
 
+  const formClass = classNames(style.novaTarefa);
   function adicionarTarefas(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
     setTarefas((tarefasAntigas) => [
@@ -33,8 +35,8 @@ export default function Formulario({ setTarefas }: Props) {
 
   return (
     <FormProvider {...methods}>
-      <form className={style.novaTarefa} onSubmit={adicionarTarefas}>
-        <div className={style.inputContainer}>
+      <form className={formClass} onSubmit={adicionarTarefas}>
+        <div>
           <label htmlFor="tarefa">Adicione uma tarefa</label>
           <Input
             type="text"
@@ -47,7 +49,7 @@ export default function Formulario({ setTarefas }: Props) {
             })}
           />
         </div>
-        <div className={style.inputContainer}>
+        <div>
           <label htmlFor="tempo">Tempo</label>
           <Input
             type="time"
