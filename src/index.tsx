@@ -5,13 +5,20 @@ import App from "./pages/App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { ErrorPage } from "./pages/ErrorPage";
+import { Teste } from "./pages/Test";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [{ path: "/", element: <Home /> }],
+    children: [
+      { path: "/", element: <Home /> },
+      {
+        path: "/teste",
+        element: <Teste />,
+      },
+    ],
   },
 ]);
 const root = ReactDOM.createRoot(

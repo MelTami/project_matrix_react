@@ -10,6 +10,7 @@
   min-height: calc(100vh - 32px);
   width: 100%;
   padding: 32px;
+  margin-top: 20px;
   box-sizing: border-box;
   border-radius: 10px;
   background-color: #171717;
@@ -26,4 +27,20 @@
     align-content: center;
     padding: 64px;
   }
+}
+
+.TesteStyle {
+  margin-top: 20px;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  font-size: 100px;
+}
+
+.ErrorStyle {
+  margin-top: 20px;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  font-size: 100px;
 }
