@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './list.module.scss';
+import style from './List.module.scss';
 import Item from './Item';
-import { IList } from './types';
+import { IList } from './IList';
 
 export default function List({ tasks, selectTask }: IList) {
   return (
