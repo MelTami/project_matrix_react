@@ -13,6 +13,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   background-color: #171717;
+  flex: content;
 
   @media screen and (min-width: 1280px) {
     grid-template-areas:

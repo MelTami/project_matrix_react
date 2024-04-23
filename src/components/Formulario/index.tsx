@@ -6,6 +6,7 @@ import { ITarefa } from "../../types/ITarefa";
 import { Input } from "./Input";
 import { FormProvider, useForm } from "react-hook-form";
 import classNames from "classnames";
+import * as yup from "yup";
 
 interface Props {
   setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>;
@@ -15,10 +16,35 @@ export default function Formulario({ setTarefas }: Props) {
   const [tarefa, setTarefa] = useState("");
   const [tempo, setTempo] = useState("00:00");
   const methods = useForm();
-
   const formClass = classNames(style.novaTarefa);
-  function adicionarTarefas(evento: React.FormEvent<HTMLFormElement>) {
+
+  async function validate() {
+    let schema = yup.object().shape({
+      tarefa: yup
+        .string()
+        .matches(
+          /^[a-zA-Z\s]*$/,
+          "Não são permitidos números no campo de texto"
+        )
+        .required("É necessário preencher a tarefa"),
+      tempo: yup
+        .string()
+        .required("É necessário colocar um tempo de pelo menos 00:00:01"),
+    });
+    try {
+      await schema.validate({ tarefa, tempo });
+      return true;
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+  }
+
+  async function adicionarTarefas(evento: React.FormEvent<HTMLFormElement>) {
     evento.preventDefault();
+    if (!(await validate())) {
+      return;
+    }
     setTarefas((tarefasAntigas) => [
       ...tarefasAntigas,
       {
