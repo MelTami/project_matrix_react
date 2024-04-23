@@ -7,6 +7,8 @@ interface Props extends ITarefa {
   selecionaTarefa: (tarefaSelecionada: ITarefa) => void;
 }
 
+
+
 function Item({
   tarefa,
   tempo,
@@ -15,9 +17,13 @@ function Item({
   id,
   selecionaTarefa,
 }: Props) {
-  const listClass = classNames(
-    `${style.item} ${selecionado ? style.itemSelecionado : ""} ${completado ? style.itemCompletado : ""}`
+  const listClass = classNames(`${style.item}`,
+    {
+      [`${style.itemSelecionado}`]: selecionado,
+      [`${style.itemCompletado}`]: completado,
+    }
   );
+
   return (
     <li
       className={listClass}

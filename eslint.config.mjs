@@ -24,7 +24,7 @@ export default [
 
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "eslint-plugin-prettier/recommended"],
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   rules: {
     quotes: ["error", "single"],
@@ -33,10 +33,3 @@ module.exports = {
     "no-console": "off",
   },
 };
-
-const eslintPluginPrettierRecommended = require("eslint-plugin-prettier/recommended");
-
-module.exports = [
-  // Any other config imports go at the top
-  eslintPluginPrettierRecommended,
-];

@@ -1,32 +1,46 @@
-import classNames from "classnames";
 import style from "./Relogio.module.scss";
-import React from "react";
+import React, { useMemo } from "react";
 
 interface Props {
   tempo?: number;
 }
-export default function Relogio({ tempo = 0 }: Props) {
-  const horas = Math.floor(tempo / 3600);
-  tempo = tempo % 3600;
-  const minutos = Math.floor(tempo / 60);
-  const segundos = tempo % 60;
-  const [horaDezena, horaUnidade] = String(horas).padStart(2, "0");
-  const [minutoDezena, minutoUnidade] = String(minutos).padStart(2, "0");
-  const [segundoDezena, segundoUnidade] = String(segundos).padStart(2, "0");
 
-  const classNameRelogio = classNames(
-    `${!":" ? style.relogioDivisao : style.relogioNumero}`
-  );
+
+
+
+
+
+export default function Relogio({ tempo = 0 }: Props) {
+  const time = useMemo(() => {
+    const horas = Math.floor(tempo / 3600);
+    const newTime = tempo % 3600;
+    const minutos = Math.floor(newTime / 60);
+    const segundos = newTime % 60;
+
+    const [horaDezena, horaUnidade] = String(horas).padStart(2, "0");
+    const [minutoDezena, minutoUnidade] = String(minutos).padStart(2, "0");
+    const [segundoDezena, segundoUnidade] = String(segundos).padStart(2, "0");
+
+    return {
+      horaDezena,
+      horaUnidade,
+      minutoDezena,
+      minutoUnidade,
+      segundoDezena,
+      segundoUnidade
+    }
+  }, [tempo])
+
   return (
     <React.Fragment>
-      <span className={classNameRelogio}>{horaDezena}</span>
-      <span className={classNameRelogio}>{horaUnidade}</span>
+      <span className={style.relogioNumero}>{time.horaDezena}</span>
+      <span className={style.relogioNumero}>{time.horaUnidade}</span>
       <span className={style.relogioDivisao}>:</span>
-      <span className={classNameRelogio}>{minutoDezena}</span>
-      <span className={classNameRelogio}>{minutoUnidade}</span>
+      <span className={style.relogioNumero}>{time.minutoDezena}</span>
+      <span className={style.relogioNumero}>{time.minutoUnidade}</span>
       <span className={style.relogioDivisao}>:</span>
-      <span className={classNameRelogio}>{segundoDezena}</span>
-      <span className={classNameRelogio}>{segundoUnidade}</span>
+      <span className={style.relogioNumero}>{time.segundoDezena}</span>
+      <span className={style.relogioNumero}>{time.segundoUnidade}</span>
     </React.Fragment>
   );
 }
