@@ -1,37 +1,37 @@
-import React, { useState } from "react";
-import Formulario from "../components/Formulario";
-import Lista from "../components/Lista";
-import Cronometro from "../components/Cronometro";
-import { ITarefa } from "../types/ITarefa";
-import style from "./App.module.scss";
+import React, { useState } from 'react';
+import Form from '../components/Form';
+import Lista from '../components/Lista';
+import Timer from '../components/Timer';
+import { ITask } from '../types/ITask';
+import style from './App.module.scss';
 
 export function Home() {
-  const [tarefas, setTarefas] = useState<ITarefa[]>([]);
-  const [selecionado, setSelecionado] = useState<ITarefa>();
+  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [selected, setSelected] = useState<ITask>();
 
-  function selecionaTarefa(tarefaSelecionada: ITarefa) {
-    setSelecionado(tarefaSelecionada);
-    setTarefas((tarefasAnteriores) =>
-      tarefasAnteriores.map((tarefa) => ({
-        ...tarefa,
-        selecionado: tarefa.id === tarefaSelecionada.id ? true : false,
+  function selectTask(taskSelected: ITask) {
+    setSelected(taskSelected);
+    setTasks((oldTasks) =>
+      oldTasks.map((task) => ({
+        ...task,
+        selected: task.id === taskSelected.id ? true : false
       }))
     );
   }
 
-  function finalizarTarefa() {
-    if (selecionado) {
-      setSelecionado(undefined);
-      setTarefas((tarefasAnteriores) =>
-        tarefasAnteriores.map((tarefa) => {
-          if (tarefa.id === selecionado.id) {
+  function endTask() {
+    if (selected) {
+      setSelected(undefined);
+      setTasks((oldTasks) =>
+        oldTasks.map((task) => {
+          if (task.id === selected.id) {
             return {
-              ...tarefa,
-              selecionado: false,
-              completado: true,
+              ...task,
+              selected: false,
+              completed: true
             };
           }
-          return tarefa;
+          return task;
         })
       );
     }
@@ -39,9 +39,9 @@ export function Home() {
 
   return (
     <div className={style.AppStyle}>
-      <Formulario setTarefas={setTarefas} />
-      <Lista tarefas={tarefas} selecionaTarefa={selecionaTarefa} />
-      <Cronometro selecionado={selecionado} finalizarTarefa={finalizarTarefa} />
+      <Form setTasks={setTasks} />
+      <Lista tasks={tasks} selectTask={selectTask} />
+      <Timer selected={selected} endTask={endTask} />
     </div>
   );
 }

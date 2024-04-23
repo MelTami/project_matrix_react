@@ -1,7 +1,7 @@
-.novaTarefa {
+.newTask {
   display: flexbox;
   flex-direction: column;
-  grid-area: nova-tarefa;
+  grid-area: nova-task;
   background-color: hsl(278, 28%, 50%);
   border-radius: 10px;
   box-shadow: 2px 4px 4px #0000009f;
@@ -32,7 +32,7 @@
       }
     }
   }
-  .error{
+  .error {
     color: red;
   }
 

@@ -1,7 +1,7 @@
-export function tempoParaSegundos(tempo: string) {
-  const [horas = "0", minutos = "0", segundos = "0"] = tempo.split(":");
+export function timeToSeconds(time: string) {
+  const [hours = '0', minutes = '0', seconds = '0'] = time.split(':');
 
-  const horasEmSegundos = Number(horas) * 3600;
-  const minutosEmSegundos = Number(minutos) * 60;
-  return horasEmSegundos + minutosEmSegundos + Number(segundos);
+  const hoursInSeconds = Number(hours) * 3600;
+  const minutesInSeconds = Number(minutes) * 60;
+  return hoursInSeconds + minutesInSeconds + Number(seconds);
 }

@@ -1,20 +1,20 @@
-import React from "react";
-import style from "./Lista.module.scss";
-import Item from "./Item";
-import { ITarefa } from "../../types/ITarefa";
+import React from 'react';
+import style from './Lista.module.scss';
+import Item from './Item';
+import { ITask } from '../../types/ITask';
 
 interface Props {
-  tarefas: ITarefa[];
-  selecionaTarefa: (tarefaSelecionada: ITarefa) => void;
+  tasks: ITask[];
+  selectTask: (taskSelecionada: ITask) => void;
 }
 
-function Lista({ tarefas, selecionaTarefa }: Props) {
+function Lista({ tasks, selectTask }: Props) {
   return (
-    <aside className={style.listaTarefas}>
-      <h2>Escolha uma tarefa</h2>
+    <aside className={style.listatasks}>
+      <h2>Escolha uma task</h2>
       <ul>
-        {tarefas.map((item) => (
-          <Item selecionaTarefa={selecionaTarefa} key={item.id} {...item} />
+        {tasks.map((item) => (
+          <Item selectTask={selectTask} key={item.id} {...item} />
         ))}
       </ul>
     </aside>
