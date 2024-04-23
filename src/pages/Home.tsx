@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Form from '../components/Form';
-import Lista from '../components/Lista';
+import List from '../components/List';
 import Timer from '../components/Timer';
 import { ITask } from '../types/ITask';
 import style from './App.module.scss';
@@ -40,7 +40,7 @@ export function Home() {
   return (
     <div className={style.AppStyle}>
       <Form setTasks={setTasks} />
-      <Lista tasks={tasks} selectTask={selectTask} />
+      <List tasks={tasks} selectTask={selectTask} />
       <Timer selected={selected} endTask={endTask} />
     </div>
   );
