@@ -9,3 +9,10 @@ export interface ITimerForm {
   task: string;
   time: string;
 }
+
+export interface ILabel {
+  htmlFor: {
+    id: string;
+    text: string;
+  };
+}
