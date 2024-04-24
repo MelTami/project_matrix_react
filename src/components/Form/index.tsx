@@ -4,7 +4,7 @@ import style from './Form.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { Input } from './Input';
 import { Controller } from 'react-hook-form';
-import { IForm, ITimerForm } from './types';
+import { IForm, ITimerForm } from './Formtypes';
 import { useTimerForm } from './useTimerForm';
 
 export default function Form({ setTasks }: IForm) {

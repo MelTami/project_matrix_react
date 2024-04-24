@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, forwardRef } from 'react';
-import { ILabel } from '../types';
+import { ILabel } from '../Formtypes';
 
 export const Label: React.FC<ILabel> = ({ htmlFor }) => {
   return (

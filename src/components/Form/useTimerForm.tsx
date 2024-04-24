@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { ITimerForm } from './types';
+import { ITimerForm } from './Formtypes';
 import { timeToSeconds } from 'common/utils/time';
 
 export const useTimerForm = () => {

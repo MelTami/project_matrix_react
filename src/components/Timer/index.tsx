@@ -3,7 +3,7 @@ import style from './Timer.module.scss';
 import Clock from './Clock';
 import { timeToSeconds } from '../../common/utils/time';
 import Button from '../Button';
-import { ITimer } from './ITimer';
+import { ITimer } from './Timertypes';
 
 export default function Timer({ selected, endTask }: ITimer) {
   const [time, setTime] = useState<number>();
