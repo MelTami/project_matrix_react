@@ -3,13 +3,10 @@ import style from './Timer.module.scss';
 import Clock from './Clock';
 import { timeToSeconds } from '../../common/utils/time';
 import Button from '../Button';
-import classNames from 'classnames';
-import { ITimer } from './types';
+import { ITimer } from './ITimer';
 
 export default function Timer({ selected, endTask }: ITimer) {
   const [time, setTime] = useState<number>();
-  const timerClass = classNames(style.timer);
-  const clockClass = classNames(style.clockWrapper);
 
   useEffect(() => {
     if (selected?.time) {
@@ -28,9 +25,9 @@ export default function Timer({ selected, endTask }: ITimer) {
   }
 
   return (
-    <div className={timerClass}>
+    <div className={style.timer}>
       <p>Escolha um card e inicie o cronômetro</p>
-      <div className={clockClass}>
+      <div className={style.clockWrapper}>
         <Clock time={time} />
       </div>
       <Button onClick={() => regressiva(time)}>Começar</Button>

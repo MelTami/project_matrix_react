@@ -1,13 +1,9 @@
 import React from 'react';
 import style from './Item.module.scss';
-import { ITask } from '../../../types/ITask';
 import classNames from 'classnames';
+import { IItem } from '../IList';
 
-interface Props extends ITask {
-  selectTask: (taskSelected: ITask) => void;
-}
-
-function Item({ task, time, selected, completed, id, selectTask }: Props) {
+function Item({ task, time, selected, completed, id, selectTask }: IItem) {
   const listClass = classNames(`${style.item}`, {
     [`${style.itemSelected}`]: selected,
     [`${style.itemCompleted}`]: completed

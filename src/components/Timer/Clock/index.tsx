@@ -1,6 +1,6 @@
 import style from './Clock.module.scss';
 import React, { useMemo } from 'react';
-import { IClock } from './types';
+import { IClock } from '../ITimer';
 
 export default function Clock({ time = 0 }: IClock) {
   const times = useMemo(() => {

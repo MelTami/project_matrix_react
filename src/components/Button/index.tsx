@@ -1,9 +1,8 @@
 import React from 'react';
 import style from './Button.module.scss';
+import { IButton } from './IButton';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
-
-export default function Button({ onClick, type, children }: Props) {
+export default function Button({ onClick, type, children }: IButton) {
   return (
     <button type={type} className={style.button} onClick={onClick}>
       {children}

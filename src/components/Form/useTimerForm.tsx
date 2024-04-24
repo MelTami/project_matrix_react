@@ -8,8 +8,11 @@ export const useTimerForm = () => {
     task: yup
       .string()
       .matches(/^[a-zA-Z\s]*$/, 'Não são permitidos números no campo de texto')
-      .required('É necessário preencher a task'),
-    time: yup.string().required('É necessário colocar um tempo de pelo menos 00:00:01')
+      .required('É necessário preencher a tarefa'),
+    time: yup
+      .string()
+      .matches(/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/, 'Não são permitidos números no campo de texto')
+      .required('É necessário colocar um tempo de pelo menos 00:00:01')
   });
 
   return useForm<ITimerForm>({

@@ -27,14 +27,14 @@ export default function Form({ setTasks }: IForm) {
   return (
     <form className={style.newTask} onSubmit={handleSubmit(adicionartasks)}>
       <div>
-        <label htmlFor="task">Adicione uma task</label>
+        <label htmlFor="task">Adicione uma tarefa</label>
 
         <Controller
           control={control}
           name="task"
           render={({ field, fieldState }) => (
             <>
-              <Input {...field} id="task" step="1" placeholder="Escreva a task aqui" />
+              <Input {...field} id="task" step="1" placeholder="Escreva a tarefa aqui" />
               <p className={style.error}>{fieldState.error?.message}</p>
             </>
           )}
